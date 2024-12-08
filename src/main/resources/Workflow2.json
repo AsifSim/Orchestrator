@@ -1,0 +1,5 @@
+{
+  "inbound": "UI",
+  "outbound": "UI",
+  "workflowList": ["C","V","E"]
+}

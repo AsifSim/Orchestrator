@@ -1,0 +1,5 @@
+{
+  "inbound": "sftp",
+  "outbound": "sftp",
+  "workflowList": ["A","V","E"]
+}

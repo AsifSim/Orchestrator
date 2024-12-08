@@ -1,0 +1,5 @@
+{
+  "inbound": "kafka",
+  "outbound": "kafka",
+  "workflowList": ["B","V","E"]
+}
