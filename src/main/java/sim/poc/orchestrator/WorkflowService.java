@@ -21,7 +21,7 @@ public class WorkflowService {
         if (files != null) {
             for (File file : files) {
                 try {
-                    System.out.println("FOr file "+file.getName());
+                    System.out.println("Reading file "+file.getName());
                     Workflow workflow = objectMapper.readValue(file, Workflow.class);
                     workflows.add(workflow);
                 } catch (Exception e) {

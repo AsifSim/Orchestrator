@@ -1,5 +1,31 @@
 {
-  "inbound": "sftp",
-  "outbound": "sftp",
-  "workflowList": ["A","V","E"]
+  "workflowName": "SFTP Workflow",
+  "payload": {
+    "inbound": {
+      "type": "sftp",
+      "parameters": {
+        "server": "sftp.example.com",
+        "port": 22,
+        "credentials": {
+          "username": "user1",
+          "password": "securepassword1"
+        },
+        "directory": "/inbound/data"
+      }
+    },
+    "outbound": {
+      "type": "sftp",
+      "parameters": {
+        "server": "sftp.example.com",
+        "port": 22,
+        "credentials": {
+          "username": "user1",
+          "password": "securepassword1"
+        },
+        "directory": "/outbound/data"
+      }
+    },
+    "workflowList": ["Transform", "Validate", "Enrich"]
+  },
+  "port": 8081
 }

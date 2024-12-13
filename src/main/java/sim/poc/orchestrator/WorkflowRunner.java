@@ -1,8 +1,5 @@
 package sim.poc.orchestrator;
 
-//import sim.poc.orchestrator.Workflow;
-//import sim.poc.orchestrator.WorkflowProcessor;
-//import sim.poc.orchestrator.WorkflowService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -21,12 +18,15 @@ public class WorkflowRunner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        String directoryPath = "C:/Users/asif.azmi_simadvisor/Downloads/orchestrator/orchestrator/src/main/resources";
+        String directoryPath = "C:/spriced-platform/Orchestrator/Orchestrator/src/main/resources";
         List<Workflow> workflows = workflowService.loadWorkflows(directoryPath);
 
         for (Workflow workflow : workflows) {
-            workflowProcessor.processWorkflow(workflow);
+            try {
+                workflowProcessor.processWorkflow(workflow);
+            } catch (Exception e) {
+                System.err.println("Error processing workflow: " + workflow.getWorkflowName() + " - " + e.getMessage());
+            }
         }
     }
 }
-

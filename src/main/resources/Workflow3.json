@@ -1,5 +1,27 @@
 {
-  "inbound": "kafka",
-  "outbound": "kafka",
-  "workflowList": ["B","V","E"]
+  "workflowName": "Database to HTTP Workflow",
+  "payload": {
+    "inbound": {
+      "type": "database",
+      "parameters": {
+        "connection": {
+          "url": "jdbc:mysql://localhost:3306/mydb",
+          "username": "dbuser",
+          "password": "dbpassword"
+        },
+        "query": "SELECT * FROM data_source WHERE processed = 0"
+      }
+    },
+    "outbound": {
+      "type": "http",
+      "parameters": {
+        "endpoint": "http://api.example.com/receive",
+        "headers": {
+          "Content-Type": "application/json"
+        }
+      }
+    },
+    "workflowList": ["Extract", "Transform", "Load"]
+  },
+  "port": 8083
 }

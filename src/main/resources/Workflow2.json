@@ -1,5 +1,29 @@
 {
-  "inbound": "UI",
-  "outbound": "UI",
-  "workflowList": ["C","V","E"]
+  "workflowName": "UI Workflow",
+  "payload": {
+    "inbound": {
+      "type": "ui",
+      "parameters": {
+        "inputForm": {
+          "fields": ["name", "email", "address"],
+          "validations": {
+            "email": "regex:^\\S+@\\S+\\.\\S+$",
+            "address": "minLength:10"
+          }
+        }
+      }
+    },
+    "outbound": {
+      "type": "http",
+      "parameters": {
+        "endpoint": "http://api.example.com/process",
+        "headers": {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer token123"
+        }
+      }
+    },
+    "workflowList": ["Parse", "Filter", "Aggregate"]
+  },
+  "port": 8082
 }

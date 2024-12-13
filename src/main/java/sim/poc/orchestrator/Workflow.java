@@ -1,20 +1,48 @@
 package sim.poc.orchestrator;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Workflow {
-    @JsonProperty("inbound")
-    String inbound;
-    @JsonProperty("outbound")
-    String outbound;
-    @JsonProperty("workflowList")
-    List<String> workflowList;
+    @JsonProperty("workflowName") // New field to match the JSON
+    private String workflowName;
+
+    @JsonProperty("payload")
+    private Payload payload;
+
+    @JsonProperty("port")
+    private int port;
+
+    public String getWorkflowName() {
+        return workflowName;
+    }
+
+    public void setWorkflowName(String workflowName) {
+        this.workflowName = workflowName;
+    }
+
+    public Payload getPayload() {
+        return payload;
+    }
+
+    public void setPayload(Payload payload) {
+        this.payload = payload;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = port;
+    }
+
+    public String toString(){
+        return "Workflow{" +
+                "workflowName='" + workflowName + '\'' +
+                ", payload=" + payload +
+                ", port=" + port +
+                '}';
+    }
+
 }
